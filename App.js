@@ -29,11 +29,12 @@ import {
 
 const App: () => React$Node = () => {
   const [chipState, setChipState] = useState(1);
+  const [navState, setNavState] = useState(1);
 
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
+      <SafeAreaView style={{flex: 1}}>
         <ScrollView contentInsetAdjustmentBehavior="automatic">
           {/* Search Bar */}
           <View style={styles.pad}>
@@ -119,7 +120,12 @@ const App: () => React$Node = () => {
             PRODUCTS
           </Text>
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-            <View style={{flexDirection: 'row', paddingHorizontal: 16, marginHorizontal: -4}}>
+            <View
+              style={{
+                flexDirection: 'row',
+                paddingHorizontal: 16,
+                marginHorizontal: -4,
+              }}>
               <TouchableOpacity
                 style={chipState === 1 ? styles.chipActive : styles.chip}
                 onPress={() => {
@@ -187,26 +193,116 @@ const App: () => React$Node = () => {
           <View style={{padding: 8}}>
             <View style={{flexDirection: 'row'}}>
               <TouchableOpacity style={styles.product}>
-                <View style={styles.imgTemp}></View>
-                <Text style={styles.productText}>Lorem ipsum dolor si amet!</Text>
+                <View style={styles.imgTemp} />
+                <Text style={styles.productText}>
+                  Lorem ipsum dolor si amet!
+                </Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.product}>
-                <View style={styles.imgTemp}></View>
-                <Text style={styles.productText}>Lorem ipsum dolor si amet!</Text>
+                <View style={styles.imgTemp} />
+                <Text style={styles.productText}>
+                  Lorem ipsum dolor si amet!
+                </Text>
               </TouchableOpacity>
             </View>
             <View style={{flexDirection: 'row'}}>
               <TouchableOpacity style={styles.product}>
-                <View style={styles.imgTemp}></View>
-                <Text style={styles.productText}>Lorem ipsum dolor si amet!</Text>
+                <View style={styles.imgTemp} />
+                <Text style={styles.productText}>
+                  Lorem ipsum dolor si amet!
+                </Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.product}>
-                <View style={styles.imgTemp}></View>
-                <Text style={styles.productText}>Lorem ipsum dolor si amet!</Text>
+                <View style={styles.imgTemp} />
+                <Text style={styles.productText}>
+                  Lorem ipsum dolor si amet!
+                </Text>
+              </TouchableOpacity>
+            </View>
+            <View style={{flexDirection: 'row'}}>
+              <TouchableOpacity style={styles.product}>
+                <View style={styles.imgTemp} />
+                <Text style={styles.productText}>
+                  Lorem ipsum dolor si amet!
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.product}>
+                <View style={styles.imgTemp} />
+                <Text style={styles.productText}>
+                  Lorem ipsum dolor si amet!
+                </Text>
               </TouchableOpacity>
             </View>
           </View>
         </ScrollView>
+        {/* Nav Bar */}
+        <View style={styles.navBar}>
+          <TouchableOpacity
+            style={styles.navWrapper}
+            onPress={() => {
+              setNavState(1);
+            }}>
+            <View
+              style={navState === 1 ? styles.navCircleActive : styles.navCircle}
+            />
+            <Text
+              style={navState === 1 ? styles.navTextActive : styles.navText}>
+              Home
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.navWrapper}
+            onPress={() => {
+              setNavState(2);
+            }}>
+            <View
+              style={navState === 2 ? styles.navCircleActive : styles.navCircle}
+            />
+            <Text
+              style={navState === 2 ? styles.navTextActive : styles.navText}>
+              Activity
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.navWrapper}
+            onPress={() => {
+              setNavState(3);
+            }}>
+            <View
+              style={navState === 3 ? styles.navCircleActive : styles.navCircle}
+            />
+            <Text
+              style={navState === 3 ? styles.navTextActive : styles.navText}>
+              Payment
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.navWrapper}
+            onPress={() => {
+              setNavState(4);
+            }}>
+            <View
+              style={navState === 4 ? styles.navCircleActive : styles.navCircle}
+            />
+            <Text
+              style={navState === 4 ? styles.navTextActive : styles.navText}>
+              Inbox
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.navWrapper}
+            onPress={() => {
+              setNavState(5);
+            }}>
+            <View
+              style={navState === 5 ? styles.navCircleActive : styles.navCircle}
+            />
+            <Text
+              style={navState === 5 ? styles.navTextActive : styles.navText}>
+              Account
+            </Text>
+          </TouchableOpacity>
+        </View>
       </SafeAreaView>
     </>
   );
@@ -297,6 +393,35 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     fontSize: 12,
     fontWeight: '600',
+  },
+  navBar: {
+    flexDirection: 'row',
+  },
+  navWrapper: {
+    flex: 1,
+    padding: 16,
+    alignItems: 'center',
+  },
+  navCircle: {
+    height: 24,
+    width: 24,
+    borderRadius: 24,
+    backgroundColor: 'lightgray',
+    marginBottom: 8,
+  },
+  navCircleActive: {
+    height: 24,
+    width: 24,
+    borderRadius: 24,
+    backgroundColor: '#7dc342',
+    marginBottom: 8,
+  },
+  navText: {
+    fontSize: 10,
+  },
+  navTextActive: {
+    fontSize: 10,
+    color: '#7dc342',
   },
   pad: {
     paddingHorizontal: 16,
