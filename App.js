@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {useState} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -14,6 +14,9 @@ import {
   View,
   Text,
   StatusBar,
+  TextInput,
+  TouchableWithoutFeedback,
+  TouchableOpacity,
 } from 'react-native';
 
 import {
@@ -25,46 +28,183 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 const App: () => React$Node = () => {
+  const [chipState, setChipState] = useState(1);
+
   return (
     <>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
+        <ScrollView contentInsetAdjustmentBehavior="automatic">
+          {/* Search Bar */}
+          <View style={styles.pad}>
+            <Text style={styles.appTitle}>LEMONILO</Text>
+            <TextInput
+              style={styles.searchBar}
+              placeholder="Search!"
+              defaultValue={''}
+            />
+          </View>
+
+          {/* Balance Cards */}
+          <View style={{flexDirection: 'row'}}>
+            <View style={styles.balance}>
+              <Text style={styles.balanceText}>Balance: Rp. 250.000</Text>
             </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
+            <View style={styles.balance}>
+              <Text style={styles.balanceText}>Points: 10.000</Text>
             </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
+          </View>
+
+          {/* Menu */}
+          <View>
+            <View
+              style={{
+                flexDirection: 'row',
+                paddingTop: 16,
+                paddingHorizontal: 16,
+              }}>
+              <View style={styles.menu}>
+                <TouchableOpacity style={styles.menuItem} />
+                <Text style={styles.menuText}>Food</Text>
+              </View>
+              <View style={styles.menu}>
+                <TouchableOpacity style={styles.menuItem} />
+                <Text style={styles.menuText}>Mart</Text>
+              </View>
+              <View style={styles.menu}>
+                <TouchableOpacity style={styles.menuItem} />
+                <Text style={styles.menuText}>Delivery</Text>
+              </View>
+              <View style={styles.menu}>
+                <TouchableOpacity style={styles.menuItem} />
+                <Text style={styles.menuText}>Health</Text>
+              </View>
             </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
+            <View
+              style={{
+                flexDirection: 'row',
+                paddingBottom: 16,
+                paddingHorizontal: 16,
+              }}>
+              <View style={styles.menu}>
+                <TouchableOpacity style={styles.menuItem} />
+                <Text style={styles.menuText}>Car</Text>
+              </View>
+              <View style={styles.menu}>
+                <TouchableOpacity style={styles.menuItem} />
+                <Text style={styles.menuText}>Groceries</Text>
+              </View>
+              <View style={styles.menu}>
+                <TouchableOpacity style={styles.menuItem} />
+                <Text style={styles.menuText}>Pulsa</Text>
+              </View>
+              <View style={styles.menu}>
+                <TouchableOpacity style={styles.menuItem} />
+                <Text style={styles.menuText}>More</Text>
+              </View>
             </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
+          </View>
+
+          {/* Divider */}
+          <View style={styles.divider} />
+
+          {/* Chips */}
+          <Text
+            style={{
+              fontSize: 24,
+              fontWeight: '800',
+              paddingLeft: 16,
+              marginBottom: 16,
+            }}>
+            PRODUCTS
+          </Text>
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+            <View style={{flexDirection: 'row', paddingHorizontal: 16, marginHorizontal: -4}}>
+              <TouchableOpacity
+                style={chipState === 1 ? styles.chipActive : styles.chip}
+                onPress={() => {
+                  setChipState(1);
+                }}>
+                <Text
+                  style={
+                    chipState === 1 ? styles.chipTextActive : styles.chipText
+                  }>
+                  Entertainment
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={chipState === 2 ? styles.chipActive : styles.chip}
+                onPress={() => {
+                  setChipState(2);
+                }}>
+                <Text
+                  style={
+                    chipState === 2 ? styles.chipTextActive : styles.chipText
+                  }>
+                  Transport
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={chipState === 3 ? styles.chipActive : styles.chip}
+                onPress={() => {
+                  setChipState(3);
+                }}>
+                <Text
+                  style={
+                    chipState === 3 ? styles.chipTextActive : styles.chipText
+                  }>
+                  Lifestyle
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={chipState === 4 ? styles.chipActive : styles.chip}
+                onPress={() => {
+                  setChipState(4);
+                }}>
+                <Text
+                  style={
+                    chipState === 4 ? styles.chipTextActive : styles.chipText
+                  }>
+                  Payments
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={chipState === 5 ? styles.chipActive : styles.chip}
+                onPress={() => {
+                  setChipState(5);
+                }}>
+                <Text
+                  style={
+                    chipState === 5 ? styles.chipTextActive : styles.chipText
+                  }>
+                  Promos
+                </Text>
+              </TouchableOpacity>
             </View>
-            <LearnMoreLinks />
+          </ScrollView>
+
+          {/* Products */}
+          <View style={{padding: 8}}>
+            <View style={{flexDirection: 'row'}}>
+              <TouchableOpacity style={styles.product}>
+                <View style={styles.imgTemp}></View>
+                <Text style={styles.productText}>Lorem ipsum dolor si amet!</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.product}>
+                <View style={styles.imgTemp}></View>
+                <Text style={styles.productText}>Lorem ipsum dolor si amet!</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={{flexDirection: 'row'}}>
+              <TouchableOpacity style={styles.product}>
+                <View style={styles.imgTemp}></View>
+                <Text style={styles.productText}>Lorem ipsum dolor si amet!</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.product}>
+                <View style={styles.imgTemp}></View>
+                <Text style={styles.productText}>Lorem ipsum dolor si amet!</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -73,41 +213,100 @@ const App: () => React$Node = () => {
 };
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
+  appTitle: {
+    color: '#7dc342',
     fontSize: 24,
+    textAlign: 'center',
+    fontWeight: '800',
+    marginVertical: 16,
+  },
+  searchBar: {
+    padding: 8,
+    backgroundColor: Colors.lighter,
+    borderRadius: 8,
+  },
+  balance: {
+    flex: 1,
+    padding: 16,
+    borderWidth: 2,
+    borderColor: Colors.lighter,
+  },
+  balanceText: {
     fontWeight: '600',
-    color: Colors.black,
+    fontSize: 12,
+    textAlign: 'center',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
+  menu: {
+    flex: 1,
+    margin: 8,
+    alignItems: 'center',
   },
-  highlight: {
-    fontWeight: '700',
+  menuItem: {
+    width: 64,
+    height: 64,
+    borderRadius: 32,
+    backgroundColor: Colors.lighter,
+    marginBottom: 8,
   },
-  footer: {
-    color: Colors.dark,
+  chip: {
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderRadius: 24,
+    borderWidth: 1,
+    marginHorizontal: 4,
+    borderColor: 'lightgray',
+    justifyContent: 'center',
+  },
+  chipActive: {
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderRadius: 24,
+    marginHorizontal: 4,
+    justifyContent: 'center',
+    backgroundColor: '#7dc342',
+    color: 'white',
+  },
+  chipText: {
+    textAlign: 'center',
+  },
+  chipTextActive: {
+    textAlign: 'center',
+    color: 'white',
+  },
+  product: {
+    borderRadius: 8,
+    backgroundColor: 'white',
+    flex: 1,
+    alignItems: 'center',
+    margin: 8,
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 3},
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 2,
+  },
+  imgTemp: {
+    backgroundColor: '#7dc342',
+    borderTopLeftRadius: 16,
+    borderTopRightRadius: 16,
+    width: '100%',
+    height: 200,
+  },
+  productText: {
+    paddingVertical: 16,
+    paddingHorizontal: 8,
     fontSize: 12,
     fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
+  },
+  pad: {
+    paddingHorizontal: 16,
+    paddingBottom: 24,
+    backgroundColor: 'white',
+  },
+  divider: {
+    height: 2,
+    backgroundColor: Colors.lighter,
+    marginBottom: 16,
   },
 });
 
