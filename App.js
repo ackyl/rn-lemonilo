@@ -17,6 +17,7 @@ import {
   TextInput,
   TouchableWithoutFeedback,
   TouchableOpacity,
+  Image,
 } from 'react-native';
 
 import {
@@ -37,24 +38,26 @@ const App: () => React$Node = () => {
       <SafeAreaView style={{flex: 1}}>
         <ScrollView contentInsetAdjustmentBehavior="automatic">
           {/* Search Bar */}
-          <View style={styles.pad}>
-            <Text style={styles.appTitle}>LEMONILO</Text>
+          <View style={styles.topWrapper}>
+            <Image
+              style={styles.appLogo}
+              source={require('./src/img/logo.png')}
+            />
             <TextInput
               style={styles.searchBar}
-              placeholder="Search!"
+              placeholder="Cari Produk Sehat & Natural"
               defaultValue={''}
             />
           </View>
 
-          {/* Balance Cards */}
-          <View style={{flexDirection: 'row'}}>
-            <View style={styles.balance}>
-              <Text style={styles.balanceText}>Balance: Rp. 250.000</Text>
-            </View>
-            <View style={styles.balance}>
-              <Text style={styles.balanceText}>Points: 10.000</Text>
-            </View>
-          </View>
+          {/* Promo Cards */}
+          <TouchableOpacity style={styles.promo}>
+            <Image
+              style={styles.promoImage}
+              resizeMode="cover"
+              source={require('./src/img/promo.jpg')}
+            />
+          </TouchableOpacity>
 
           {/* Menu */}
           <View>
@@ -66,19 +69,19 @@ const App: () => React$Node = () => {
               }}>
               <View style={styles.menu}>
                 <TouchableOpacity style={styles.menuItem} />
-                <Text style={styles.menuText}>Food</Text>
+                <Text style={styles.menuText}>Rendah Kalori</Text>
               </View>
               <View style={styles.menu}>
                 <TouchableOpacity style={styles.menuItem} />
-                <Text style={styles.menuText}>Mart</Text>
+                <Text style={styles.menuText}>Tanpa Tambahan Gula</Text>
               </View>
               <View style={styles.menu}>
                 <TouchableOpacity style={styles.menuItem} />
-                <Text style={styles.menuText}>Delivery</Text>
+                <Text style={styles.menuText}>Rendah Gula</Text>
               </View>
               <View style={styles.menu}>
                 <TouchableOpacity style={styles.menuItem} />
-                <Text style={styles.menuText}>Health</Text>
+                <Text style={styles.menuText}>Organik</Text>
               </View>
             </View>
             <View
@@ -89,19 +92,19 @@ const App: () => React$Node = () => {
               }}>
               <View style={styles.menu}>
                 <TouchableOpacity style={styles.menuItem} />
-                <Text style={styles.menuText}>Car</Text>
+                <Text style={styles.menuText}>Bebas Gluten</Text>
               </View>
               <View style={styles.menu}>
                 <TouchableOpacity style={styles.menuItem} />
-                <Text style={styles.menuText}>Groceries</Text>
+                <Text style={styles.menuText}>Ibu Hamil & Menyusui</Text>
               </View>
               <View style={styles.menu}>
                 <TouchableOpacity style={styles.menuItem} />
-                <Text style={styles.menuText}>Pulsa</Text>
+                <Text style={styles.menuText}>Produk Ramah Anak</Text>
               </View>
               <View style={styles.menu}>
                 <TouchableOpacity style={styles.menuItem} />
-                <Text style={styles.menuText}>More</Text>
+                <Text style={styles.menuText}>Selengkapnya</Text>
               </View>
             </View>
           </View>
@@ -112,12 +115,12 @@ const App: () => React$Node = () => {
           {/* Chips */}
           <Text
             style={{
-              fontSize: 24,
+              fontSize: 16,
               fontWeight: '800',
               paddingLeft: 16,
               marginBottom: 16,
             }}>
-            PRODUCTS
+            PRODUK
           </Text>
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
             <View
@@ -135,7 +138,7 @@ const App: () => React$Node = () => {
                   style={
                     chipState === 1 ? styles.chipTextActive : styles.chipText
                   }>
-                  Entertainment
+                  Pilihan
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
@@ -147,7 +150,7 @@ const App: () => React$Node = () => {
                   style={
                     chipState === 2 ? styles.chipTextActive : styles.chipText
                   }>
-                  Transport
+                  Banyak Dibeli
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
@@ -159,7 +162,7 @@ const App: () => React$Node = () => {
                   style={
                     chipState === 3 ? styles.chipTextActive : styles.chipText
                   }>
-                  Lifestyle
+                  LemoniloBOX
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
@@ -171,7 +174,7 @@ const App: () => React$Node = () => {
                   style={
                     chipState === 4 ? styles.chipTextActive : styles.chipText
                   }>
-                  Payments
+                  Terbaru
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
@@ -183,7 +186,7 @@ const App: () => React$Node = () => {
                   style={
                     chipState === 5 ? styles.chipTextActive : styles.chipText
                   }>
-                  Promos
+                  Promo
                 </Text>
               </TouchableOpacity>
             </View>
@@ -193,13 +196,23 @@ const App: () => React$Node = () => {
           <View style={{padding: 8}}>
             <View style={{flexDirection: 'row'}}>
               <TouchableOpacity style={styles.product}>
-                <View style={styles.imgTemp} />
+                <View style={styles.productImageWrapper}>
+                  <Image
+                    style={styles.productImage}
+                    source={require('./src/img/mi.jpg')}
+                  />
+                </View>
                 <Text style={styles.productText}>
                   Lorem ipsum dolor si amet!
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.product}>
-                <View style={styles.imgTemp} />
+                <View style={styles.productImageWrapper}>
+                  <Image
+                    style={styles.productImage}
+                    source={require('./src/img/mi.jpg')}
+                  />
+                </View>
                 <Text style={styles.productText}>
                   Lorem ipsum dolor si amet!
                 </Text>
@@ -207,34 +220,73 @@ const App: () => React$Node = () => {
             </View>
             <View style={{flexDirection: 'row'}}>
               <TouchableOpacity style={styles.product}>
-                <View style={styles.imgTemp} />
+                <View style={styles.productImageWrapper}>
+                  <Image
+                    style={styles.productImage}
+                    source={require('./src/img/mi.jpg')}
+                  />
+                </View>
                 <Text style={styles.productText}>
                   Lorem ipsum dolor si amet!
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.product}>
-                <View style={styles.imgTemp} />
-                <Text style={styles.productText}>
-                  Lorem ipsum dolor si amet!
-                </Text>
-              </TouchableOpacity>
-            </View>
-            <View style={{flexDirection: 'row'}}>
-              <TouchableOpacity style={styles.product}>
-                <View style={styles.imgTemp} />
-                <Text style={styles.productText}>
-                  Lorem ipsum dolor si amet!
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.product}>
-                <View style={styles.imgTemp} />
+                <View style={styles.productImageWrapper}>
+                  <Image
+                    style={styles.productImage}
+                    source={require('./src/img/mi.jpg')}
+                  />
+                </View>
                 <Text style={styles.productText}>
                   Lorem ipsum dolor si amet!
                 </Text>
               </TouchableOpacity>
             </View>
           </View>
+
+          {/* Chips */}
+          <Text
+            style={{
+              fontSize: 16,
+              fontWeight: '800',
+              paddingLeft: 16,
+              marginTop: 32,
+              marginBottom: 16,
+            }}>
+            ARTIKEL
+          </Text>
+          <TouchableOpacity style={styles.article}>
+            <View style={styles.productImageWrapper}>
+              <Image
+                style={styles.articleImage}
+                resizeMode="cover"
+                source={require('./src/img/covid.jpg')}
+              />
+            </View>
+            <Text style={styles.productText}>Lorem ipsum dolor si amet!</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.article}>
+            <View style={styles.productImageWrapper}>
+              <Image
+                style={styles.articleImage}
+                resizeMode="cover"
+                source={require('./src/img/covid.jpg')}
+              />
+            </View>
+            <Text style={styles.productText}>Lorem ipsum dolor si amet!</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.article}>
+            <View style={styles.productImageWrapper}>
+              <Image
+                style={styles.articleImage}
+                resizeMode="cover"
+                source={require('./src/img/covid.jpg')}
+              />
+            </View>
+            <Text style={styles.productText}>Lorem ipsum dolor si amet!</Text>
+          </TouchableOpacity>
         </ScrollView>
+
         {/* Nav Bar */}
         <View style={styles.navBar}>
           <TouchableOpacity
@@ -247,7 +299,7 @@ const App: () => React$Node = () => {
             />
             <Text
               style={navState === 1 ? styles.navTextActive : styles.navText}>
-              Home
+              Food
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -260,7 +312,7 @@ const App: () => React$Node = () => {
             />
             <Text
               style={navState === 2 ? styles.navTextActive : styles.navText}>
-              Activity
+              Beauty
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -273,7 +325,7 @@ const App: () => React$Node = () => {
             />
             <Text
               style={navState === 3 ? styles.navTextActive : styles.navText}>
-              Payment
+              Suplement
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -286,7 +338,7 @@ const App: () => React$Node = () => {
             />
             <Text
               style={navState === 4 ? styles.navTextActive : styles.navText}>
-              Inbox
+              Bundles
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -316,26 +368,41 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     marginVertical: 16,
   },
+  topWrapper: {
+    paddingHorizontal: 16,
+    paddingBottom: 24,
+    backgroundColor: 'white',
+    textAlign: 'center',
+    alignItems: 'center',
+  },
+  appLogo: {
+    height: 40,
+    aspectRatio: 1280 / 357,
+    marginVertical: 16,
+  },
   searchBar: {
+    width: '100%',
     padding: 8,
     backgroundColor: Colors.lighter,
-    borderRadius: 8,
+    borderRadius: 4,
   },
-  balance: {
+  promo: {
     flex: 1,
-    padding: 16,
-    borderWidth: 2,
-    borderColor: Colors.lighter,
+    height: 160,
+    backgroundColor: Colors.lighter,
+    alignItems: 'center',
   },
-  balanceText: {
-    fontWeight: '600',
-    fontSize: 12,
-    textAlign: 'center',
+  promoImage: {
+    flex: 1,
+    alignSelf: 'stretch',
+    width: undefined,
+    height: undefined,
   },
   menu: {
     flex: 1,
     margin: 8,
     alignItems: 'center',
+    textAlign: 'center',
   },
   menuItem: {
     width: 64,
@@ -343,6 +410,12 @@ const styles = StyleSheet.create({
     borderRadius: 32,
     backgroundColor: Colors.lighter,
     marginBottom: 8,
+    textAlign: 'center',
+  },
+  menuText: {
+    fontSize: 12,
+    fontWeight: '200',
+    textAlign: 'center',
   },
   chip: {
     paddingHorizontal: 16,
@@ -381,12 +454,20 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
     elevation: 2,
   },
-  imgTemp: {
-    backgroundColor: '#7dc342',
-    borderTopLeftRadius: 16,
-    borderTopRightRadius: 16,
+  productImageWrapper: {
+    backgroundColor: 'white',
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
     width: '100%',
     height: 200,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderBottomWidth: 1,
+    borderColor: Colors.lighter,
+  },
+  productImage: {
+    height: 100,
+    aspectRatio: 292 / 224,
   },
   productText: {
     paddingVertical: 16,
@@ -394,12 +475,33 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '600',
   },
+  article: {
+    borderRadius: 8,
+    backgroundColor: 'white',
+    flex: 1,
+    alignItems: 'center',
+    marginBottom: 16,
+    marginHorizontal: 16,
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 3},
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 2,
+  },
+  articleImage: {
+    flex: 1,
+    alignSelf: 'stretch',
+    width: undefined,
+    height: undefined,
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
+  },
   navBar: {
     flexDirection: 'row',
   },
   navWrapper: {
     flex: 1,
-    padding: 16,
+    padding: 8,
     alignItems: 'center',
   },
   navCircle: {
@@ -422,11 +524,6 @@ const styles = StyleSheet.create({
   navTextActive: {
     fontSize: 10,
     color: '#7dc342',
-  },
-  pad: {
-    paddingHorizontal: 16,
-    paddingBottom: 24,
-    backgroundColor: 'white',
   },
   divider: {
     height: 2,
